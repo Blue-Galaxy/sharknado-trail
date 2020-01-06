@@ -55,7 +55,7 @@ class Graph:
 
   def insert_vertex(self, x = None):
     """Insert and return a new vertex with element x"""
-    v = self._Vertex(x)
+    v = self.Vertex(x)
     self._outgoing[v] = {}
     if self.is_directed():
       self._incoming[v] = {}
@@ -81,6 +81,10 @@ class Graph:
       self._element = x
 
 
+    def __repr__(self):
+      return f"{self._element}"
+
+
     def element(self):
       """Return element asociated with this vertex"""
       return self._element
@@ -93,14 +97,19 @@ class Graph:
 
   class Edge:
     """Lightweight edge structures for a graph"""
-    __slots__ = 'origin', 'destination', '_element'
+    __slots__ = '_origin', '_destination', '_element'
 
 
-    def __init__(self,u, v, x):
+    def __init__(self, u, v, x):
       """Do not call constructor directly. Use Graph's insert_edge(u, v, x)"""
       self._origin = u
       self._destination = v
       self._element = x
+
+
+    def __repr__(self):
+      return f"Origin: {self._origin}\nDestination: {self._destination}\
+      \nElement {self._element}"
 
 
     def endpoints(self):
