@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+from .models import *
 import uuid
 import random
 
@@ -56,15 +57,19 @@ class Room_generator:
                 # Connect the rooms
                 self.storage[previous_room_title].connectRooms(self.storage[room_title], direction[1])
 
+                if direction[1] == 'n':
+                    initial_y += 1
+                elif direction[1] == 's':
+                    initial_y -= 1
+                elif direction[1] == 'e':
+                    initial_x += 1
+                elif direction[1] == 'w':
+                    initial_x -= 1
+
             # Set the room as the previous room
             previous_room_title = room_title
 
             # Incriment or decriment position
-            if direction[1] == 'n':
-                initial_y += 1
-            elif direction[1] == 's':
-                initial_y -= 1
-            elif direction[1] == 'e':
-                initial_x += 1
-            elif direction[1] == 'w':
-                initial_x -= 1
+            
+            
+
