@@ -15,12 +15,6 @@ import json
 @csrf_exempt
 @api_view(["GET"])
 def rooms(request):
-    Room.objects.all().delete()
-    num_rooms = 100
-    width = 15
-    height = 15
-    w = Room_generator(width, height, num_rooms)
-    w.generate()
     rooms_ = {room.id: room.dictionary() for room in Room.objects.all()}
     return JsonResponse({'rooms': rooms_}, safe=True)
 
