@@ -7,19 +7,21 @@ from django.contrib.auth.models import User
 from .models import *
 from rest_framework.decorators import api_view
 import json
-#from generate_rooms import Room_generator
+from .generate_rooms import Room_generator
 import random
 
 # instantiate pusher
 # pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
 
-"""
 @csrf_exempt
 @api_view(["GET"])
 def rooms(request):
-    generator = Room_generator
+    generator = Room_generator()
     generator.generate(100)
-    return JsonResponse(generator.storage)"""
+    return_dict = {}
+    for i in list(generator.storage.values()):
+        return_dict[i.id] = {'desc':i.description, 'title':i.title, 'x':i.position_x, 'y':i.position_y}
+    return JsonResponse(return_dict, safe = False)
 
 
 @csrf_exempt
