@@ -124,21 +124,22 @@ class Room_generator:
             # Print string
             print(string)
 
-# def main():
-#     """Run script to populate database with rooms and items."""
-#     num_rooms = 100
-#     width = 20
-#     height = 20
+def main():
+    """Run script to populate database with rooms and items."""
+    # Room.objects.all().delete()
+    # num_rooms = 100
+    # width = 15
+    # height = 15
 
-#     w = Room_generator(width, height, num_rooms)
-#     w.generate()
-#     w.print_rooms()
+    # w = Room_generator(width, height, num_rooms)
+    # w.generate()
+    w.print_rooms()
 
-#     print('World Created!! Good Job!')
-#     print(f"\n\nWorld\n  height: {height}\n  width: {width},\n  num_rooms: {w.room_count}\n")
+    print('World Created!! Good Job!')
+    print(f"\n\nWorld\n  height: {height}\n  width: {width},\n  num_rooms: {w.room_count}\n")
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 
 
